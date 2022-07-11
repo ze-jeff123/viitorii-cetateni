@@ -55,7 +55,7 @@ function SearchComp(props) {
                     <SearchIcon />
                 </SearchIconWrapper>
                 <StyledInputBase
-                    placeholder="Search…"
+                    placeholder="Cauta…"
                     inputProps={{ 'aria-label': 'search' }}
                 />
             </Search>

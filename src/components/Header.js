@@ -14,7 +14,13 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Search from "./Search"
 import styled from 'styled-components';
-const pages = ['Acasa', 'Articole', 'Despre noi'];
+import { Link } from 'react-router-dom';
+import Logo from './Logo';
+const StyledLink = styled(Link)`
+    text-decoration : none;
+    color : white;
+`
+const pages = [{text:'Acasa',url:"acasa"}, {text:'Articole',url:'articole'}, {text:'Despre noi',url:"despre-noi"} ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const StyledSearch = styled(Search)`
@@ -44,24 +50,7 @@ const ResponsiveAppBar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
+          <Logo responsive/>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -94,7 +83,7 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem style={ { justifyContent : "center" } } key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center"><StyledLink style={{color:'black'}} to={page.url}>{page.text}</StyledLink></Typography>
                 </MenuItem>
               ))}
               <MenuItem style={ { justifyContent : "center" } } onClick={handleCloseNavMenu}>
@@ -128,7 +117,7 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+               <StyledLink to={page.url}> {page.text} </StyledLink>
               </Button>
             ))}
             <StyledSearch/>

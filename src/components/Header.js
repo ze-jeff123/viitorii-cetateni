@@ -16,6 +16,7 @@ import Search from "./Search"
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import {v4 as uuidv4 } from 'uuid';
 const StyledLink = styled(Link)`
     text-decoration : none;
     color : white;
@@ -81,8 +82,8 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem style={ { justifyContent : "center" } } key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page,index) => (
+                <MenuItem style={ { justifyContent : "center" } } key={uuidv4()} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center"><StyledLink style={{color:'black'}} to={page.url}>{page.text}</StyledLink></Typography>
                 </MenuItem>
               ))}
@@ -113,7 +114,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={uuidv4()}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >

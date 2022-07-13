@@ -1,12 +1,12 @@
 
-function importAll(r, dir) {
+function importAll(r) {
     return r.keys().map((val) =>
-        import(`../MyObjects/${val.substring(2)}`)
+        import(`../articles/${val.substring(2)}`)
     );
 }
 
-function importAllDefault(dir) {
-    return Promise.all(importAll(require.context('../MyObjects/', false, /\.js$/))).then((val) => {
+function importAllDefault() {
+    return Promise.all(importAll(require.context('../articles/', true, /\.js$/))).then((val) => {
         return val.map((val) => val.default);
     });
 }

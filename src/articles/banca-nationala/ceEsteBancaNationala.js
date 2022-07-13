@@ -2,7 +2,7 @@ import image from "../../img/banca-nationala.jpeg";
 
 const ceEsteBancaNationala = {
     category : "Banca Nationala",
-    title : 'Ce este Banca Nationala',
+    title : 'Ce este Banca Nationala?',
     featuredImage : image,
     featuredImageAlt : "banca nationala",
     skipFeaturedImage : false,

@@ -24,24 +24,32 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import Article from './Article';
 import { ListSubheader, Collapse } from '@mui/material';
-import {  ExpandLess, ExpandMore, StarBorder } from '@mui/icons-material';
+import { ExpandLess, ExpandMore, StarBorder } from '@mui/icons-material';
 const drawerWidth = 240;
 
 function makeUnique(array) {
   return [...new Set(array)];
 }
 function getCategories(articles) {
-    return articles && makeUnique(articles.map((article) => article.category));
+  return articles && makeUnique(articles.map((article) => article.category));
 }
 
-function NestedList({articles}) {
-  const [open, setOpen] = React.useState(true);
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
-
+function repeat(count, element) {
+  let result = [];
+  for (let i = 0; i < count; i++) {
+    result.push(element);
+  }
+  return result;
+}
+function NestedList({ articles }) {
   const categories = getCategories(articles);
+  const [open, setOpen] = React.useState(repeat(5, false));
+
+  const handleClick = (index) => {
+    let copyOpen = open.slice(0);
+    copyOpen[index] = !copyOpen[index];
+    setOpen(copyOpen);
+  };
 
   return (
     <List
@@ -50,26 +58,31 @@ function NestedList({articles}) {
       aria-labelledby="nested-list-subheader"
 
     >
-     
-      
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary="Inbox" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
-        </List>
-      </Collapse>
+
+      {
+        categories &&
+        categories.map((category, index) => (
+          <>
+            <ListItemButton onClick={handleClick.bind(null, index)}>
+              <ListItemText primaryTypographyProps={{fontSize : '1.2rem'}} primary={category} />
+              {open[index] ? <ExpandLess /> : <ExpandMore />}
+            </ListItemButton>
+
+            <Collapse in={open[index]} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                {
+                  articles &&
+                  articles.filter((article) => article.category === category).map((article) => (
+                    <ListItemButton sx={{ pl: 4 }}>
+                      <ListItemText primary={article.title} />
+                    </ListItemButton>
+                  ))
+                }
+              </List>
+            </Collapse>
+          </>
+        ))
+      }
     </List>
   );
 }
@@ -87,8 +100,8 @@ function Articles(props) {
   };
 
   const drawer = (
-    <div style={{paddingTop : "55px"}}>
-        <NestedList articles={articles}></NestedList>
+    <div style={{ paddingTop: "55px" }}>
+      <NestedList articles={articles}></NestedList>
     </div>
   );
 

@@ -23,8 +23,58 @@ import Container from "@mui/material/Container";
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import Article from './Article';
+import { ListSubheader, Collapse } from '@mui/material';
+import {  ExpandLess, ExpandMore, StarBorder } from '@mui/icons-material';
 const drawerWidth = 240;
 
+function makeUnique(array) {
+  return [...new Set(array)];
+}
+function getCategories(articles) {
+    return articles && makeUnique(articles.map((article) => article.category));
+}
+
+function NestedList({articles}) {
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
+  const categories = getCategories(articles);
+
+  return (
+    <List
+      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+
+    >
+     
+      
+      <ListItemButton onClick={handleClick}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary="Inbox" />
+        {open ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <StarBorder />
+            </ListItemIcon>
+            <ListItemText primary="Starred" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+    </List>
+  );
+}
+
+///TODO : make the edges align on the sidebar vs the header
 function Articles(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -37,34 +87,8 @@ function Articles(props) {
   };
 
   const drawer = (
-    <div>
-      <Toolbar />
-      <Divider />
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+    <div style={{paddingTop : "55px"}}>
+        <NestedList articles={articles}></NestedList>
     </div>
   );
 

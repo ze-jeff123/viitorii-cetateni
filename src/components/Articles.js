@@ -23,16 +23,18 @@ import Container from "@mui/material/Container";
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import Article from './Article';
+import {Link, useLocation} from 'react-router-dom';
+import styled from 'styled-components';
 import { ListSubheader, Collapse } from '@mui/material';
 import { ExpandLess, ExpandMore, StarBorder } from '@mui/icons-material';
+import { getCategories, slugifyArticle } from '../global/articlesUtility';
 const drawerWidth = 240;
 
-function makeUnique(array) {
-  return [...new Set(array)];
-}
-function getCategories(articles) {
-  return articles && makeUnique(articles.map((article) => article.category));
-}
+const StyledLink = styled(Link)`
+    text-decoration : none;
+    color : black;
+`
+
 
 function repeat(count, element) {
   let result = [];
@@ -44,6 +46,8 @@ function repeat(count, element) {
 function NestedList({ articles }) {
   const categories = getCategories(articles);
   const [open, setOpen] = React.useState(repeat(5, false));
+
+  const location = useLocation();
 
   const handleClick = (index) => {
     let copyOpen = open.slice(0);
@@ -73,8 +77,10 @@ function NestedList({ articles }) {
                 {
                   articles &&
                   articles.filter((article) => article.category === category).map((article) => (
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemText primary={article.title} />
+                    <ListItemButton selected={location.pathname===`/articole/${slugifyArticle(article)}`} sx={{ pl: 4 }} >
+                      <StyledLink to={`/articole/${slugifyArticle(article)}`}>
+                        {article.title}
+                      </StyledLink>
                     </ListItemButton>
                   ))
                 }

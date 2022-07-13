@@ -21,6 +21,8 @@ import ReactMarkdown from 'react-markdown';
 import importAllDefault from '../global/importAllDefaults';
 import Container from "@mui/material/Container";
 import { marked } from 'marked';
+import DOMPurify from 'dompurify';
+import Article from './Article';
 const drawerWidth = 240;
 
 function Articles(props) {
@@ -68,9 +70,6 @@ function Articles(props) {
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
-  if (articles) {
-    console.log(articles[0].content, marked.parse(articles[0].content))
-  }
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -134,7 +133,7 @@ function Articles(props) {
         <Container>
           {
             articles &&
-            <div dangerouslySetInnerHTML={{__html:marked.parse(articles[0].content)}}></div>
+            <Article article={articles[0]}></Article>
           }
         </Container>
       </Box>

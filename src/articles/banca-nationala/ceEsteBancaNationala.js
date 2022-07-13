@@ -2,9 +2,15 @@ import image from "../../img/banca-nationala.jpeg";
 
 const ceEsteBancaNationala = {
     title : 'Ce este Banca nationala',
-    img : image,
-    content : `a ##bunch of words aj ds sd ds sd dsajidwa ddwiajd adwij dawidj
-     awdij **awdiaj** wdiaj daiwjd awdija wdiajawdiaj wdiaj daiwjd awdija wdiaj  awdiaj wdiaj daiwjd awdija wdiaj  `,
+    featuredImage : image,
+    featuredImageAlt : "banca nationala",
+    skipFeaturedImage : false,
+    content : 
+`
+Banca Nationala a Romaniei este institutia publica care este responsabila pentru aplicarea politicii monetare a tarii.Ea are puterea de a crea monede noi, fără acoperire, pentru a ajuta la ameliorarea deficitului bugetar.
+
+Scopul Bancii Nationale este sa asigure stabilitatea prețurilor, adică să controleze inflația, și să supravegheze băncile și alte instituții de credit, și a sistemelor de plata. De asemenea, Banca Națională administrează rezervele financiare internaționale ale României.
+`,
 }
 
 export default ceEsteBancaNationala;

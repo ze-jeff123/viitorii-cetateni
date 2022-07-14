@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
+import { slugify } from '../global/articlesUtility';
 import IconButton from '@mui/material/IconButton';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
@@ -23,7 +24,7 @@ import Container from "@mui/material/Container";
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import Article from './Article';
-import {Link, useLocation} from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { ListSubheader, Collapse } from '@mui/material';
 import { ExpandLess, ExpandMore, StarBorder } from '@mui/icons-material';
@@ -42,6 +43,16 @@ function repeat(count, element) {
     result.push(element);
   }
   return result;
+}
+
+function getLastSlug(pathname) {
+  let s = '';
+  for (let i = pathname.length - 1; i >= 0; i--) {
+    if (pathname[i] === '/') {
+      return s;
+    }
+    s = pathname[i] + s;
+  }
 }
 function NestedList({ articles }) {
   const categories = getCategories(articles);
@@ -68,7 +79,7 @@ function NestedList({ articles }) {
         categories.map((category, index) => (
           <>
             <ListItemButton onClick={handleClick.bind(null, index)}>
-              <ListItemText primaryTypographyProps={{fontSize : '1.2rem'}} primary={category} />
+              <ListItemText primaryTypographyProps={{ fontSize: '1.2rem' }} primary={category} />
               {open[index] ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
 
@@ -77,7 +88,7 @@ function NestedList({ articles }) {
                 {
                   articles &&
                   articles.filter((article) => article.category === category).map((article) => (
-                    <ListItemButton selected={location.pathname===`/articole/${slugifyArticle(article)}`} sx={{ pl: 4 }} >
+                    <ListItemButton selected={location.pathname === `/articole/${slugifyArticle(article)}`} sx={{ pl: 4 }} >
                       <StyledLink to={`/articole/${slugifyArticle(article)}`}>
                         {article.title}
                       </StyledLink>
@@ -98,6 +109,8 @@ function Articles(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [articles, setArticles] = useState(null);
+  const location = useLocation();
+  console.log(location);
   useEffect(() => {
     importAllDefault().then((val) => { setArticles(val) });
   }, []);
@@ -175,8 +188,8 @@ function Articles(props) {
         <Toolbar />
         <Container>
           {
-            articles &&
-            <Article article={articles[0]}></Article>
+            articles && 
+            <Article article={articles.find((article) => (slugify(article.title) === getLastSlug(location.pathname)))}></Article>
           }
         </Container>
       </Box>

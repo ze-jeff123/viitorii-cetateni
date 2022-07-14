@@ -13,4 +13,4 @@ function slugify(title) {
 function slugifyArticle(article) {
     return `${slugify(article.category)}/${slugify(article.title)}`;
 }
-export { getCategories, slugifyArticle };
+export { getCategories, slugifyArticle , slugify};

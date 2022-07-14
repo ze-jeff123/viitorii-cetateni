@@ -21,7 +21,7 @@ const StyledLink = styled(Link)`
     text-decoration : none;
     color : white;
 `
-const pages = [{text:'Acasa',url:"acasa"}, {text:'Articole',url:'articole'}, {text:'Despre noi',url:"despre-noi"} ];
+const pages = [{text:'Acasa',url:"acasa"}, {text:'Articole',url:'articole/introducere/introducere'}, {text:'Despre noi',url:"despre-noi"} ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const StyledSearch = styled(Search)`

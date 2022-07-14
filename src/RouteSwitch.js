@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter,HashRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import Articles from "./components/Articles";
 import { getCategories, slugifyArticle } from "./global/articlesUtility";
@@ -20,7 +20,7 @@ const RouteSwitch = () => {
 
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/articole' element={<Articles />} />
@@ -30,7 +30,7 @@ const RouteSwitch = () => {
             <Route path={`/articole/${slugifyArticle(article)}`} element={<Articles />} />))
         }
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

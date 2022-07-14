@@ -29,6 +29,7 @@ import styled from 'styled-components';
 import { ListSubheader, Collapse } from '@mui/material';
 import { ExpandLess, ExpandMore, StarBorder } from '@mui/icons-material';
 import { getCategories, slugifyArticle } from '../global/articlesUtility';
+import Search from './Search'
 const drawerWidth = 240;
 
 const StyledLink = styled(Link)`
@@ -155,6 +156,8 @@ function Articles(props) {
               <MenuIcon />
             </IconButton>
             <Logo />
+
+            <Search style={{marginLeft : 'auto'}}/>
           </Toolbar>
         </AppBar>
         <Box

@@ -16,12 +16,12 @@ import Search from "./Search"
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import {v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 const StyledLink = styled(Link)`
     text-decoration : none;
     color : white;
 `
-const pages = [{text:'Acasa',url:"acasa"}, {text:'Articole',url:'articole/introducere/introducere'}, {text:'Despre noi',url:"despre-noi"} ];
+const pages = [{ text: 'Acasa', url: "/" }, { text: 'Articole', url: 'articole/introducere/introducere' }, { text: 'Despre noi', url: "despre-noi" }];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const StyledSearch = styled(Search)`
@@ -51,7 +51,7 @@ const ResponsiveAppBar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Logo responsive/>
+          <Logo responsive />
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -64,7 +64,7 @@ const ResponsiveAppBar = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Menu classes={{display:"flex"}}
+            <Menu classes={{ display: "flex" }}
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -82,13 +82,15 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page,index) => (
-                <MenuItem style={ { justifyContent : "center" } } key={uuidv4()} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center"><StyledLink style={{color:'black'}} to={page.url}>{page.text}</StyledLink></Typography>
-                </MenuItem>
+              {pages.map((page, index) => (
+                <StyledLink style={{ color: 'black' }} to={page.url}>
+                  <MenuItem style={{ justifyContent: "center" }} key={uuidv4()} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page.text}</Typography>
+                  </MenuItem>
+                </StyledLink>
               ))}
-              <MenuItem style={ { justifyContent : "center" } } onClick={handleCloseNavMenu}>
-                    <StyledSearch></StyledSearch>
+              <MenuItem style={{ justifyContent: "center" }} onClick={handleCloseNavMenu}>
+                <StyledSearch></StyledSearch>
               </MenuItem>
             </Menu>
           </Box>
@@ -113,15 +115,17 @@ const ResponsiveAppBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={uuidv4()}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-               <StyledLink to={page.url}> {page.text} </StyledLink>
-              </Button>
+              <StyledLink to={page.url}>
+                <Button
+                  key={uuidv4()}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page.text}
+                </Button>
+              </StyledLink>
             ))}
-            <StyledSearch/>
+            <StyledSearch />
           </Box>
 
         </Toolbar>

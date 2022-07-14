@@ -88,11 +88,13 @@ function NestedList({ articles }) {
                 {
                   articles &&
                   articles.filter((article) => article.category === category).map((article) => (
-                    <ListItemButton selected={location.pathname === `/articole/${slugifyArticle(article)}`} sx={{ pl: 4 }} >
-                      <StyledLink to={`/articole/${slugifyArticle(article)}`}>
-                        {article.title}
-                      </StyledLink>
-                    </ListItemButton>
+                    <StyledLink to={`/articole/${slugifyArticle(article)}`}>
+                      <ListItemButton selected={location.pathname === `/articole/${slugifyArticle(article)}`} sx={{ pl: 4 }} >
+                        <ListItemText>
+                          {article.title}
+                        </ListItemText>
+                      </ListItemButton>
+                    </StyledLink>
                   ))
                 }
               </List>
@@ -188,7 +190,7 @@ function Articles(props) {
         <Toolbar />
         <Container>
           {
-            articles && 
+            articles &&
             <Article article={articles.find((article) => (slugify(article.title) === getLastSlug(location.pathname)))}></Article>
           }
         </Container>

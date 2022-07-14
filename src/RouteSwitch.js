@@ -4,6 +4,7 @@ import Articles from "./components/Articles";
 import { getCategories, slugifyArticle } from "./global/articlesUtility";
 import { useEffect, useState } from 'react';
 import importAllDefault from "./global/importAllDefaults";
+import Home from "./components/Home";
 const RouteSwitch = () => {
 
   const [articles, setArticles] = useState(null);
@@ -21,7 +22,7 @@ const RouteSwitch = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Home />} />
         <Route path='/articole' element={<Articles />} />
         {
           articles &&

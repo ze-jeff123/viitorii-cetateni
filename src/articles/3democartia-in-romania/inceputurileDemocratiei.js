@@ -5,6 +5,7 @@ const ceEsteBancaNationala = {
     title : 'Inceputurile Democratiei in Romania',
     featuredImage : image,
     showForDisplay:true,
+    skipFeaturedImage : true,
     content : 
 `   
 România a devenit republica în februarie 1947, sub conducerea lui Gheorghe Gheorghiu-Dej. Astfel a luat nastere statul Republica Socialista Romania, fiind guvernata dupa modelul comunist-sovietic.

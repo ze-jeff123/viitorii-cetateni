@@ -17,7 +17,7 @@ function Logo(props) {
                 variant="h6"
                 noWrap
                 component="a"
-                href="/"
+                href="/viitorii-cetateni"
                 sx={{
                     mr: 2,
                     display: display,

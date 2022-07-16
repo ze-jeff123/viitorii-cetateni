@@ -13,19 +13,19 @@ const HeroContainer = styled.div`
 const StyledLink = styled(Link)`
  color : white;
  text-decoration: none;
-`   
+`
 function Home() {
     return (
         <Layout>
             <HeroImage src={flag2}>
                 <Typography variant="h2" color='white' sx={{ paddingTop: '7%', fontWeight: 'bold' }}>Viitorii Cetateni</Typography>
                 <Typography variant="h5" color='white'>Educatie civica pe intelesul tuturor</Typography>
-                <ButtonGroup sx={{marginTop : '25px'}}>
+                <ButtonGroup sx={{ marginTop: '25px' }}>
                     <StyledLink to="/articole/introducere/introducere">
-                        <Button  size="large">Articole</Button>
+                        <Button size="large">Articole</Button>
                     </StyledLink>
                     <StyledLink to="/despre-noi">
-                        <Button variant='contained' size="large">Despre noi</Button>
+                        <Button variant='contained' size="large" sx={{ boxShadow: 'none' }}>Despre noi</Button>
                     </StyledLink>
                 </ButtonGroup>
             </HeroImage>

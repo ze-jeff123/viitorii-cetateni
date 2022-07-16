@@ -1,17 +1,18 @@
 {
   "files": {
     "main.css": "/viitorii-cetateni/static/css/main.ee7956f4.css",
-    "main.js": "/viitorii-cetateni/static/js/main.bb6192b8.js",
+    "main.js": "/viitorii-cetateni/static/js/main.8f091945.js",
     "static/js/787.775316a9.chunk.js": "/viitorii-cetateni/static/js/787.775316a9.chunk.js",
     "static/media/democratie-scaune.jpg": "/viitorii-cetateni/static/media/democratie-scaune.bda17af0e8541446b165.jpg",
     "static/media/flag2.jpg": "/viitorii-cetateni/static/media/flag2.49088c37ede3b16e879f.jpg",
+    "static/media/stocks-falling.jpg": "/viitorii-cetateni/static/media/stocks-falling.6f59864e7c7639a279a0.jpg",
     "index.html": "/viitorii-cetateni/index.html",
     "main.ee7956f4.css.map": "/viitorii-cetateni/static/css/main.ee7956f4.css.map",
-    "main.bb6192b8.js.map": "/viitorii-cetateni/static/js/main.bb6192b8.js.map",
+    "main.8f091945.js.map": "/viitorii-cetateni/static/js/main.8f091945.js.map",
     "787.775316a9.chunk.js.map": "/viitorii-cetateni/static/js/787.775316a9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ee7956f4.css",
-    "static/js/main.bb6192b8.js"
+    "static/js/main.8f091945.js"
   ]
 }

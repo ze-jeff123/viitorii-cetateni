@@ -62,7 +62,7 @@ function divideUp(children) {
 }
 function MyCarousel(props) {
     return (
-        <Carousel showStatus={false} showArrows={true} style={{ display: 'flex', justifyContent: 'center' }} showIndicators={false}>
+        <Carousel showStatus={false} showArrows={true} showIndicators={false}>
             {
                 divideUp(props.children)
             }

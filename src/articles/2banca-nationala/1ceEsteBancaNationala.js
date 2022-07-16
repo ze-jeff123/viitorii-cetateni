@@ -6,6 +6,7 @@ const ceEsteBancaNationala = {
     featuredImage : image,
     featuredImageAlt : "banca nationala",
     skipFeaturedImage : false,
+    showForDisplay:true,
     content : 
 `
 Banca Nationala a Romaniei este institutia publica care este responsabila pentru aplicarea politicii monetare a tarii.Ea are puterea de a crea monede noi, fără acoperire, pentru a ajuta la ameliorarea deficitului bugetar.

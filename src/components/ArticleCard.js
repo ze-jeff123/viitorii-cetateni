@@ -5,9 +5,10 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { slugifyArticle } from '../global/articlesUtility'
 const StyledCard = styled(Card)`
-    max-width : 345px;
-    height : 345px;
+    max-width : 300px;
+    height : 300px;
     text-overflow : ellipsis;
+    background-color : #c8d6f7;
     &:hover {
         filter : brightness(0.8);
         cursor : pointer;
@@ -34,7 +35,7 @@ function ArticleCard({ article }) {
                             {article.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            {article.excerpt || article.content}
+                            {article.excerpt || article.content.slice(0,80)+'...'}
                         </Typography>
                     </CardContent>
                 </StyledCard>

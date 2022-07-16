@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/viitorii-cetateni/static/css/main.61ac7470.css",
-    "main.js": "/viitorii-cetateni/static/js/main.cf7d29f3.js",
+    "main.js": "/viitorii-cetateni/static/js/main.eb927e85.js",
     "static/js/787.775316a9.chunk.js": "/viitorii-cetateni/static/js/787.775316a9.chunk.js",
     "static/media/flag2.jpg": "/viitorii-cetateni/static/media/flag2.49088c37ede3b16e879f.jpg",
     "index.html": "/viitorii-cetateni/index.html",
     "main.61ac7470.css.map": "/viitorii-cetateni/static/css/main.61ac7470.css.map",
-    "main.cf7d29f3.js.map": "/viitorii-cetateni/static/js/main.cf7d29f3.js.map",
+    "main.eb927e85.js.map": "/viitorii-cetateni/static/js/main.eb927e85.js.map",
     "787.775316a9.chunk.js.map": "/viitorii-cetateni/static/js/787.775316a9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.61ac7470.css",
-    "static/js/main.cf7d29f3.js"
+    "static/js/main.eb927e85.js"
   ]
 }

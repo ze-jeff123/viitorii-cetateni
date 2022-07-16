@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/viitorii-cetateni/static/css/main.ee7956f4.css",
-    "main.js": "/viitorii-cetateni/static/js/main.b1f5c0f1.js",
+    "main.js": "/viitorii-cetateni/static/js/main.bb6192b8.js",
     "static/js/787.775316a9.chunk.js": "/viitorii-cetateni/static/js/787.775316a9.chunk.js",
     "static/media/democratie-scaune.jpg": "/viitorii-cetateni/static/media/democratie-scaune.bda17af0e8541446b165.jpg",
     "static/media/flag2.jpg": "/viitorii-cetateni/static/media/flag2.49088c37ede3b16e879f.jpg",
     "index.html": "/viitorii-cetateni/index.html",
     "main.ee7956f4.css.map": "/viitorii-cetateni/static/css/main.ee7956f4.css.map",
-    "main.b1f5c0f1.js.map": "/viitorii-cetateni/static/js/main.b1f5c0f1.js.map",
+    "main.bb6192b8.js.map": "/viitorii-cetateni/static/js/main.bb6192b8.js.map",
     "787.775316a9.chunk.js.map": "/viitorii-cetateni/static/js/787.775316a9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ee7956f4.css",
-    "static/js/main.b1f5c0f1.js"
+    "static/js/main.bb6192b8.js"
   ]
 }

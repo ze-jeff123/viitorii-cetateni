@@ -30,7 +30,7 @@ import { ListSubheader, Collapse } from '@mui/material';
 import { ExpandLess, ExpandMore, StarBorder } from '@mui/icons-material';
 import { getCategories, slugifyArticle } from '../global/articlesUtility';
 import Search from './Search'
-import Carousel from './Carousel';
+import MyCarousel from './MyCarousel';
 import ArticleCard from './ArticleCard';
 const drawerWidth = 240;
 
@@ -141,12 +141,12 @@ function Articles(props) {
     <>
       {
         articles &&
-        <Carousel >
+        <MyCarousel >
           {
             articles.map((article) => <ArticleCard article={article} />)
           }
 
-        </Carousel >
+        </MyCarousel >
       }
     </>
   );

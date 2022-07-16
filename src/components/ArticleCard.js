@@ -20,24 +20,26 @@ const StyledLink = styled(Link)`
 
 function ArticleCard({ article }) {
     return (
-        <StyledLink to={`/articole/${slugifyArticle(article)}`}>
-            <StyledCard>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    image={article.featuredImage}
-                    alt={article.featuredImageAlt || "imagine pentru articol"}
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component='div'>
-                        {article.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        {article.excerpt || article.content}
-                    </Typography>
-                </CardContent>
-            </StyledCard>
-        </StyledLink>
+        <div>
+            <StyledLink to={`/articole/${slugifyArticle(article)}`}>
+                <StyledCard>
+                    <CardMedia
+                        component="img"
+                        height="140"
+                        image={article.featuredImage}
+                        alt={article.featuredImageAlt || "imagine pentru articol"}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component='div'>
+                            {article.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            {article.excerpt || article.content}
+                        </Typography>
+                    </CardContent>
+                </StyledCard>
+            </StyledLink>
+        </div>
     )
 }
 

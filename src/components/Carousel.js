@@ -1,23 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const Container = styled.div`
     display : flex;
 `
 
 const StyledDiv = styled.div`
-    background-image : ${(props) => `url(${props.img})`};
-    background-repeat : no-repeat;
-    background-position : center; 
-    background-size : cover;
-    width : 100px;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    width : 25px;
+    &:hover {
+        background-color : #cccccc;
+    }
 `
 
 function Arrow(props) {
     return (
-        <StyledDiv img={props.img}>
-
+        <StyledDiv>
+            {
+                props.children
+            }
         </StyledDiv>
     )
 }
@@ -25,13 +30,12 @@ function Arrow(props) {
 function Carousel(props) {
     return (
         <Container>
-            <img src={ChevronLeftIcon} alt='hi'></img>
-            <Arrow img='../img/arrow-left.svg'></Arrow>
+            <Arrow><ChevronLeftIcon/></Arrow>
 
             {
                 props.children
             }
-            <Arrow img='../img/arrow-right.svg'></Arrow>
+            <Arrow><ChevronRightIcon/></Arrow>
 
         </Container>
     )

@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import { slugifyArticle } from '../global/articlesUtility'
 const StyledCard = styled(Card)`
     max-width : 345px;
+    height : 345px;
+    text-overflow : ellipsis;
     &:hover {
         filter : brightness(0.8);
         cursor : pointer;

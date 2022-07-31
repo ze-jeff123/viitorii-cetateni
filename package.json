@@ -1,7 +1,6 @@
 {
   "name": "viitorii-cetateni",
   "version": "0.1.0",
-  "homepage": "https://ze-jeff123.github.io/viitorii-cetateni",
   "private": false,
   "dependencies": {
     "@emotion/react": "^11.9.3",

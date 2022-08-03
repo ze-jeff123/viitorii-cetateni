@@ -1,9 +1,8 @@
+import App from "./App";
 
 const RouteSwitch = () => {
   return (
-    <div>
-      hi
-    </div>
+    <App/>
   );
 };
 

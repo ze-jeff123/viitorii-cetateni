@@ -16,6 +16,8 @@ import Container from '@mui/material/Container';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Divider from '@mui/material/Divider';
+import flatPosts from "../flatPosts.js";
+
 const HeroContainer = styled.div`
 
 `
@@ -30,15 +32,9 @@ const ColoredDiv = styled.div`
 `
 
 function Home() {
-    const [articles, setArticles] = useState(null);
-    useEffect(() => {
-        importAllDefault().then((val) => { setArticles(val) });
-    }, []);
-
     return (
         <>
             {
-                articles &&
                 <Layout>
                     <HeroImage src={flag2}>
                         <Typography alignCenter variant="h2" color='white' sx={{ paddingTop: '7%', fontWeight: 'bold' }}>Viitorii Cetateni</Typography>
@@ -57,7 +53,7 @@ function Home() {
                         <Divider sx={{marginBottom:'30px'}}></Divider>
                         <MyCarousel>
                             {
-                                articles.filter((article) => ("showForDisplay" in article) && article.showForDisplay===true ).map((article) => <ArticleCard article={article} />)
+                                flatPosts.filter((article) => article.content.metadata.featured === true).map((article) => <ArticleCard article={article} />)
                             }
                         </MyCarousel>
                     </ColoredDiv>

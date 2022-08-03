@@ -1,5 +1,4 @@
 import React from 'react';
-import post from "./posts.json";
 function App() {
   return (
     <>

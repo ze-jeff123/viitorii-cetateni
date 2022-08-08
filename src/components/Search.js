@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-
+import elasticlunr from 'elasticlunr';
 
 let Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -48,6 +48,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function SearchComp(props) {
+    //----------
+    let index = elasticlunr(function() {
+        this.addField('title');
+        this.addField('body');
+        this.setRef('id');
+    })
+
+    //-------
     return (
         <div className={props.className}>
             <Search>

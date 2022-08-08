@@ -9,7 +9,6 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import importAllDefault from '../global/importAllDefaults.js';
 import ArticleCard from "./ArticleCard";
 import MyCarousel from './MyCarousel';
 import Container from '@mui/material/Container';

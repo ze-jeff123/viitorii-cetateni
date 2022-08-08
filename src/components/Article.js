@@ -23,18 +23,22 @@ function shouldSkipFeaturedImage(article) {
     }
     return article.skipFeaturedImage;
 }
-function Article({article}) {
+function Article({ post }) {
     return (
         <StyledDiv>
             {
-                ("title" in article) && 
-                <StyledHeader>{article.title}</StyledHeader>
+                post&&
+                <>
+                {
+                    <StyledHeader>{post.content.metadata.title}</StyledHeader>
+                }
+                {<></>
+                    //   (("featuredImage" in article) && !shouldSkipFeaturedImage(article)) &&
+                    //  <StyledImage src={article.featuredImage} alt={("featuredImageAlt" in article) ? article.featuredImageAlt : 'featured image of the post'}></StyledImage>
+                }
+                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content.content) }}></div>
+            </>
             }
-            {
-                (("featuredImage" in article) && !shouldSkipFeaturedImage(article)) &&
-                <StyledImage src={article.featuredImage} alt={("featuredImageAlt" in article) ? article.featuredImageAlt : 'featured image of the post'}></StyledImage>
-            }
-            <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(marked.parse(article.content))}}></div>
         </StyledDiv>
     )
 }

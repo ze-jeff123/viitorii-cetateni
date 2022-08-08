@@ -4,6 +4,7 @@ import { CardMedia, Typography, CardContent, Card } from '@mui/material'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { slugifyArticle } from '../global/articlesUtility'
+import htmlToPlain from "../global/htmlToPlain";
 const StyledCard = styled(Card)`
     max-width : 300px;
     height : 300px;
@@ -22,20 +23,20 @@ const StyledLink = styled(Link)`
 function ArticleCard({ article }) {
     return (
         <div>
-            <StyledLink to={`/articole/${slugifyArticle(article)}`}>
+            <StyledLink to={`/${article.slug}`}>
                 <StyledCard>
                     <CardMedia
                         component="img"
                         height="140"
-                        image={article.featuredImage}
-                        alt={article.featuredImageAlt || "imagine pentru articol"}
+                        image={article.content.metadata['featured image']}
+                        alt={article.content.metadata['featured image'] || "imagine pentru articol"}
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component='div'>
-                            {article.title}
+                            {article.content.metadata.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            {article.excerpt || article.content.slice(0,80)+'...'}
+                            {htmlToPlain(article.content.content, {wordwrap:130}).slice(0,80)+'...'}
                         </Typography>
                     </CardContent>
                 </StyledCard>

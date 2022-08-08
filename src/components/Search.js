@@ -5,6 +5,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import elasticlunr from 'elasticlunr';
 import flatPosts from "../flatPosts.js";
 import { useEffect, useState } from 'react';
+import { Autocomplete, TextField } from '@mui/material';
+
 
 let Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -14,6 +16,8 @@ let Search = styled('div')(({ theme }) => ({
         backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
+    display:'flex',
+    alignItems:'center',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
@@ -32,7 +36,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     justifyContent: 'center',
 }));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
+const StyledTextField = styled(TextField)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
@@ -69,24 +73,43 @@ function intializeSearch() {
 }
 function SearchComp(props) {
 
-    const [index,setIndex] = useState(null);
+    const [index, setIndex] = useState(null);
     useEffect(() => {
         setIndex(intializeSearch());
     });
 
+    const rendered = (params) => (
+        <Search>
+            <SearchIconWrapper>
+                <SearchIcon />
+            </SearchIconWrapper>
+            <TextField {...params} inputProps={{style:{color:'white', marginLeft:'25px', height:'4px', padding:'8px'}}}>
+                
+            </TextField>
+        </Search>
+    )
+
     return (
-        <div className={props.className}>
-            <Search>
-                <SearchIconWrapper>
-                    <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                    placeholder="Cauta…"
-                    inputProps={{ 'aria-label': 'search' }}
-                />
-            </Search>
-        </div>
+        <Autocomplete
+            id="suggestions"
+            options={['one', 'two']}
+            freeSolo
+            sx={{width:300,display:'flex',alignItems:'center'}}
+            renderInput={(params) => rendered(params)}
+        />
     )
 }
 
 export default SearchComp;
+
+/*
+ <Search>
+            <SearchIconWrapper>
+                <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase {...params}
+                placeholder="Cauta…"
+                inputProps={{ 'aria-label': 'search' }}
+            />
+        </Search>
+        */

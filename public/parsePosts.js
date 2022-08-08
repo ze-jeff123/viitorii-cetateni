@@ -90,6 +90,8 @@ function parsePost(dir) {
         })
 }
 
+let globalId = 0;
+
 function resolveTree(tree) {
     return tree.then((tree) => {
         if (!Array.isArray(tree.kids)) {
@@ -98,6 +100,7 @@ function resolveTree(tree) {
                     slug: tree.slug,
                     content: content,
                     kids: [],
+                    id: ++globalId,
                 }
             })
         }
@@ -106,6 +109,7 @@ function resolveTree(tree) {
                 slug: tree.slug,
                 content: nodes[0],
                 kids: nodes.slice(1),
+                id: ++globalId,
             }
         })
     })

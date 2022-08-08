@@ -3,6 +3,8 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import elasticlunr from 'elasticlunr';
+import flatPosts from "../flatPosts.js";
+import { useEffect, useState } from 'react';
 
 let Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -47,15 +49,31 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-function SearchComp(props) {
-    //----------
-    let index = elasticlunr(function() {
+function intializeSearch() {
+    let index = elasticlunr(function () {
         this.addField('title');
         this.addField('body');
         this.setRef('id');
-    })
+    });
 
-    //-------
+    flatPosts.forEach((post) => {
+        let obj = {
+            id: post.id,
+            title: post.content.metadata.title,
+            body: post.content.content,
+        };
+        index.addDoc(obj);
+    });
+
+    return index;
+}
+function SearchComp(props) {
+
+    const [index,setIndex] = useState(null);
+    useEffect(() => {
+        setIndex(intializeSearch());
+    });
+
     return (
         <div className={props.className}>
             <Search>

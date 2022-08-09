@@ -3,8 +3,7 @@ import DOMPurify from 'dompurify';
 import styled from 'styled-components';
 
 const StyledImage = styled.img`
-    min-width : 50%;
-    max-width : 100%;
+    width : ${({post})=> ('image width' in post.content.metadata) ? `${post.content.metadata['image width']}%` : '50%'};
 `
 
 const StyledHeader = styled.h1`
@@ -19,26 +18,27 @@ const StyledDiv = styled.div`
 `
 
 function shouldSkipFeaturedImage(article) {
-    if (!("skipFeaturedImage" in article)) {
+    if (!("skip featured image in post" in article.content.metadata)) {
         return false;
     }
-    return article.skipFeaturedImage;
+    return article.content.metadata['skip featured image in post'];
 }
 function Article({ post }) {
     return (
         <StyledDiv>
             {
-                post&&
+                post &&
                 <>
-                {
-                    <StyledHeader>{post.content.metadata.title}</StyledHeader>
-                }
-                {<></>
-                    //   (("featuredImage" in article) && !shouldSkipFeaturedImage(article)) &&
-                    //  <StyledImage src={article.featuredImage} alt={("featuredImageAlt" in article) ? article.featuredImageAlt : 'featured image of the post'}></StyledImage>
-                }
-                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content.content) }}></div>
-            </>
+                    {
+                        <StyledHeader>{post.content.metadata.title}</StyledHeader>
+                    }
+
+                    {
+                        (("featured image" in post.content.metadata) && !shouldSkipFeaturedImage(post)) &&
+                        <StyledImage post={post} src={post.content.metadata['featured image']} alt={("featured image alt" in post.content.metadata) ? post.content.metadata['featured image alt'] : 'featured image of the post'}></StyledImage>
+                    }
+                    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content.content) }}></div>
+                </>
             }
         </StyledDiv>
     )

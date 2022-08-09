@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import elasticlunr from 'elasticlunr';
 import flatPosts from "../flatPosts.js";
@@ -34,7 +33,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'center',
 }));
-
+/*
 const StyledTextField = styled(TextField)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
@@ -50,7 +49,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
             },
         },
     },
-}));
+}));*/
 
 function intializeSearch() {
     let index = elasticlunr(function () {

@@ -7,19 +7,12 @@ import { Typography } from '@mui/material';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import ArticleCard from "./ArticleCard";
 import MyCarousel from './MyCarousel';
-import Container from '@mui/material/Container';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Divider from '@mui/material/Divider';
 import flatPosts from "../flatPosts.js";
 
-const HeroContainer = styled.div`
 
-`
 const StyledLink = styled(Link)`
  color : white;
  text-decoration: none;

@@ -1,9 +1,7 @@
 import React from 'react'
-import Article from './Article'
 import { CardMedia, Typography, CardContent, Card } from '@mui/material'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { slugifyArticle } from '../global/articlesUtility'
 import htmlToPlain from "../global/htmlToPlain";
 const StyledCard = styled(Card)`
     max-width : 300px;

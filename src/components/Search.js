@@ -76,6 +76,25 @@ for (let i = 0; i < flatPosts.length; i++) {
     postsById[flatPosts[i].id] = flatPosts[i];
 }
 
+function checkPrefix(prefix, value) {
+    if (!(prefix.length<=value.length)) return false;
+    for (let i = 0; i < prefix.length; i++) {
+        if (prefix[i] !== value[i]) return false;
+    }
+    return true;
+}
+
+function makeIdsUnique(array) {
+    let seenIds = {};
+    let finalArray = [];
+    for (let i = 0; i < array.length; i++) {
+        if (seenIds[array[i].id] !== true) {
+            seenIds[array[i].id] = true;
+            finalArray.push(array[i]);
+        }
+    }
+    return finalArray;
+}
 function SearchComp(props) {
 
     const [index, setIndex] = useState(null);
@@ -110,7 +129,16 @@ function SearchComp(props) {
                 if (values.length>0) {
                     setFirstOption('/'+postsById[values[0].ref].slug);
                 } 
-                return values.splice(0, Math.min(7,values.length - 1)).map((post)=>({label:postsById[post.ref].content.metadata.title, id:postsById[post.ref].id}))
+
+                const searchedSuggestions = values.splice(0, Math.min(7,values.length - 1)).map((post)=>({label:postsById[post.ref].content.metadata.title, id:postsById[post.ref].id}));
+                let prefixSuggestions =(state.inputValue !== '') ?  flatPosts.filter((post) => checkPrefix(state.inputValue.toLowerCase(), post.content.metadata.title.toLowerCase())).map((post)=>({label:post.content.metadata.title, id: post.id})) : [];
+                const finalSuggestions = makeIdsUnique(searchedSuggestions.concat(prefixSuggestions));
+                prefixSuggestions = prefixSuggestions.splice(0, Math.min(5,prefixSuggestions.length - 1));
+                if (finalSuggestions.length>0) {
+                    setFirstOption('/'+postsById[finalSuggestions[0].id].slug);
+                } 
+
+                return finalSuggestions;
             }}
         />
     )

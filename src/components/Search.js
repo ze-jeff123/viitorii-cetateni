@@ -5,6 +5,7 @@ import elasticlunr from 'elasticlunr';
 import flatPosts from "../flatPosts.js";
 import { useEffect, useState } from 'react';
 import { Autocomplete, TextField } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 let Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -101,6 +102,8 @@ function SearchComp(props) {
         setIndex(intializeSearch());
     }, []);
 
+    const navigate = useNavigate();
+
     const [firstOption, setFirstOption] = useState(null);
 
     const rendered = (params) => (
@@ -108,7 +111,7 @@ function SearchComp(props) {
             <SearchIconWrapper>
                 <SearchIcon />
             </SearchIconWrapper>
-            <form onSubmit={(e)=>{e.preventDefault(); if(firstOption!==null)window.location.assign(firstOption)}}>
+            <form onSubmit={(e)=>{e.preventDefault(); if(firstOption!==null)navigate(firstOption)}}>
             <TextField {...params} inputProps={{...params.inputProps, placeholder:'Cauta...',style:{color:'white', minWidth:'125px',maxWidth:'200px', marginLeft:'25px', height:'8px', padding:'8px'}}}>
                 
             </TextField>

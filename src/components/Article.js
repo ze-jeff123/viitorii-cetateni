@@ -1,11 +1,12 @@
 import React from 'react'
 import DOMPurify from 'dompurify';
-import { marked } from 'marked';
 import styled from 'styled-components';
+
 const StyledImage = styled.img`
     min-width : 50%;
     max-width : 100%;
 `
+
 const StyledHeader = styled.h1`
     font-size : 3rem;
     border-bottom : 2px solid gray;

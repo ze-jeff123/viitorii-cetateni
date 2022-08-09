@@ -7,7 +7,6 @@ import flatPosts from "../flatPosts.js";
 import { useEffect, useState } from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 
-
 let Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -71,31 +70,48 @@ function intializeSearch() {
 
     return index;
 }
+
+let postsById = new Array(flatPosts.length + 3);
+for (let i = 0; i < flatPosts.length; i++) {
+    postsById[flatPosts[i].id] = flatPosts[i];
+}
+
 function SearchComp(props) {
 
     const [index, setIndex] = useState(null);
     useEffect(() => {
         setIndex(intializeSearch());
-    });
+    }, []);
+
+    const [firstOption, setFirstOption] = useState(null);
 
     const rendered = (params) => (
         <Search>
             <SearchIconWrapper>
                 <SearchIcon />
             </SearchIconWrapper>
-            <TextField {...params} inputProps={{style:{color:'white', marginLeft:'25px', height:'4px', padding:'8px'}}}>
+            <form onSubmit={(e)=>{e.preventDefault(); if(firstOption!==null)window.location.assign(firstOption)}}>
+            <TextField {...params} inputProps={{...params.inputProps, placeholder:'Cauta...',style:{color:'white', minWidth:'125px',maxWidth:'200px', marginLeft:'25px', height:'8px', padding:'8px'}}}>
                 
             </TextField>
+            </form>
         </Search>
     )
 
     return (
         <Autocomplete
             id="suggestions"
-            options={['one', 'two']}
-            freeSolo
+            options={flatPosts.map((post)=>({label:post.content.metadata.title, id:post.id}))}
             sx={{width:300,display:'flex',alignItems:'center'}}
             renderInput={(params) => rendered(params)}
+            freeSolo
+            filterOptions={(options,state) => {
+                const values = index.search(state.inputValue);
+                if (values.length>0) {
+                    setFirstOption('/'+postsById[values[0].ref].slug);
+                } 
+                return values.splice(0, Math.min(7,values.length - 1)).map((post)=>({label:postsById[post.ref].content.metadata.title, id:postsById[post.ref].id}))
+            }}
         />
     )
 }

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import React from 'react';
 import Layout from "./components/Layout"
 function App() {
   return (

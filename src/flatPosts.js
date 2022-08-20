@@ -11,4 +11,4 @@ function dfs(node) {
 
 dfs(posts);
 
-export default flatPosts;
+export default flatPosts.filter((article)=>article.kids.length===0);

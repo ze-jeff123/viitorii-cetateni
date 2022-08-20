@@ -1,6 +1,7 @@
 ---
 title: Eu am un stilou
 featured: true
+excerpt: stilou e bbun
 ---
 Chiar am un stilou
 

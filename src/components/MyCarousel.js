@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -28,7 +29,7 @@ function divideArray(array, partLength) {
 
 function divideUp(children) {
     return divideArray(children, 3).map((array) => (
-        <MyDiv>
+        <MyDiv key={uuidv4()}>
             {
                 array
             }
@@ -37,7 +38,7 @@ function divideUp(children) {
 }
 function MyCarousel(props) {
     return (
-        <Carousel showStatus={false} showArrows={true} showIndicators={false}>
+        <Carousel showThumbs={false} showStatus={false} showArrows={true} showIndicators={false}>
             {
                 divideUp(props.children)
             }

@@ -35,8 +35,8 @@ function ArticleCard({ article }) {
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             {
-                                ('excerpt' in article.content) ?
-                                article.content.content.excerpt :
+                                ('excerpt' in article.content.metadata) ?
+                                article.content.metadata.excerpt :
                                 htmlToPlain(article.content.content, {wordwrap:130}).slice(0,80)+'...'
                             }
                         </Typography>

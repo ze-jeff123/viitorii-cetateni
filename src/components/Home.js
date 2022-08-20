@@ -11,6 +11,7 @@ import ArticleCard from "./ArticleCard";
 import MyCarousel from './MyCarousel';
 import Divider from '@mui/material/Divider';
 import flatPosts from "../flatPosts.js";
+import { v4 as uuidv4 } from 'uuid';
 
 
 const StyledLink = styled(Link)`
@@ -45,7 +46,7 @@ function Home() {
                         <Divider sx={{marginBottom:'30px'}}></Divider>
                         <MyCarousel>
                             {
-                                flatPosts.filter((article) => article.content.metadata.featured === true).map((article) => <ArticleCard article={article} />)
+                                flatPosts.filter((article) => article.content.metadata.featured === true).map((article) => <ArticleCard key={uuidv4()} article={article} />)
                             }
                         </MyCarousel>
                     </ColoredDiv>

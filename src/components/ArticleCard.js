@@ -34,7 +34,11 @@ function ArticleCard({ article }) {
                             {article.content.metadata.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            {htmlToPlain(article.content.content, {wordwrap:130}).slice(0,80)+'...'}
+                            {
+                                ('excerpt' in article.content) ?
+                                article.content.content.excerpt :
+                                htmlToPlain(article.content.content, {wordwrap:130}).slice(0,80)+'...'
+                            }
                         </Typography>
                     </CardContent>
                 </StyledCard>

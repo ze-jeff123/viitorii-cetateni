@@ -1,6 +1,7 @@
 import React from 'react'
 import DOMPurify from 'dompurify';
 import styled from 'styled-components';
+import "../styles.css";
 
 const StyledImage = styled.img`
     width : ${({post})=> ('image width' in post.content.metadata) ? `${post.content.metadata['image width']}%` : '50%'};
@@ -37,7 +38,7 @@ function Article({ post }) {
                         (("featured image" in post.content.metadata) && !shouldSkipFeaturedImage(post)) &&
                         <StyledImage post={post} src={post.content.metadata['featured image']} alt={("featured image alt" in post.content.metadata) ? post.content.metadata['featured image alt'] : 'featured image of the post'}></StyledImage>
                     }
-                    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content.content) }}></div>
+                    <div className="markdown-container" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content.content) }}></div>
                 </>
             }
         </StyledDiv>

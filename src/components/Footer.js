@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components';
 import theme from '../global/theme';
 import MailIcon from '@mui/icons-material/Mail';
-import { IconButton } from '@mui/material';
-import YouTubeIcon from '@mui/icons-material/YouTube';
 import YoutubeButton from './YoutubeButton';
 
 const FooterContainer = styled.div`

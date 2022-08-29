@@ -19,7 +19,7 @@ const StyledLink = styled(Link)`
     text-decoration : none;
     color : white;
 `
-const pages = [{ text: 'Acasa', url: "/" }, { text: 'Articole', url: 'articole/introducere/introducere' }, { text: 'Despre noi', url: "despre-noi" }];
+const pages = [{ text: 'Acasa', url: "/" }, { text: 'Articole', url: '/articole' }, { text: 'Despre noi', url: "despre-noi" }];
 
 const StyledSearch = styled(Search)`
     align-self : center;

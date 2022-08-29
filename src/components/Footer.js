@@ -58,6 +58,7 @@ const FlexContainer = styled.div`
 const ShareContainer = styled.div`
 `
 
+
 export default function Footer() {
     return (
         <>
@@ -70,9 +71,8 @@ export default function Footer() {
                 </Container>
 
                 <Container>
-                    <h1>Linkuri utile</h1>
+                    <h1>Linkuri</h1>
                     <Styleda href='/articole'>Articole</Styleda>
-                    <Styleda href='/despre-noi'>Despre noi</Styleda>
                     <Styleda href='/despre-noi'>Despre noi</Styleda>
                 </Container>
                 <Container>

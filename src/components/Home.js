@@ -30,10 +30,10 @@ function Home() {
             {
                 <Layout>
                     <HeroImage src={flag2}>
-                        <Typography alignCenter variant="h2" color='white' sx={{ paddingTop: '7%', fontWeight: 'bold' }}>Viitorii Cetateni</Typography>
+                        <Typography alignCenter variant="h2" color='white' sx={{ paddingTop: '7%', fontWeight: 'bold' }}>Hai Sa Fim Cetateni Model</Typography>
                         <Typography variant="h5" alignCenter color='white'>Educatie civica pe intelesul tuturor</Typography>
                         <ButtonGroup sx={{ marginTop: '25px' }}>
-                            <StyledLink to="/articole/introducere/introducere">
+                            <StyledLink to="/articole">
                                 <Button size="large">Articole</Button>
                             </StyledLink>
                             <StyledLink to="/despre-noi">

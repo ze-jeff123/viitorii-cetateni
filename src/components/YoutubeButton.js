@@ -1,8 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
 import { IconButton } from '@mui/material'
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import theme from '../global/theme';
 
 export default function YoutubeButton({color='white', onClick=(()=>{})}) {
     return (

@@ -12,7 +12,7 @@ import MyCarousel from './MyCarousel';
 import Divider from '@mui/material/Divider';
 import flatPosts from "../flatPosts.js";
 import { v4 as uuidv4 } from 'uuid';
-
+import theme from '../global/theme';
 
 const StyledLink = styled(Link)`
  color : white;
@@ -20,7 +20,7 @@ const StyledLink = styled(Link)`
 `
 
 const ColoredDiv = styled.div`
-    background-color : #c8d6f7;
+    background-color : ${theme.backgroundLightBlue};
     padding : 20px;
 `
 
